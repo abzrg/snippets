@@ -1,7 +1,11 @@
 """
 library/pathlib
 
-Documenations: https://docs.python.org/3/library/pathlib.html
+Documenations:
+    - https://docs.python.org/3/library/pathlib.html
+
+YouTube Video:
+    - https://www.youtube.com/watch?v=UcKkmwaRbsQ
 """
 
 import os
