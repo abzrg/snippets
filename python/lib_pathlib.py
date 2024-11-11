@@ -140,6 +140,7 @@ def main() -> int:
     #
 
     p = Path(".")
+    # https://docs.python.org/3/library/pathlib.html#pattern-language
     list(p.glob("**/*.py"))
 
     return 0
