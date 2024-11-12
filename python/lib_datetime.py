@@ -20,6 +20,13 @@ Documentations:
         - https://github.com/sdispater/pendulum
 YouTube Videos:
     - https://www.youtube.com/watch?v=TFa38ONq5PY
+
+Some Interesting Links about Time and Timezones:
+    - The Largely Untold Story Of How One Guy In California Keeps The World’s Computers
+      Running On The Right Time Zone. (Well, Sort Of)
+      https://onezero.medium.com/the-largely-untold-story-of-how-one-guy-in-california-keeps-the-worlds-computers-on-the-right-time-a97a5493bf73
+    - The Problem with Time & Timezones - Computerphile
+      https://www.youtube.com/watch?v=-5wpm-gesOY
 """
 
 import time
