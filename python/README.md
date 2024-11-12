@@ -25,11 +25,12 @@ Python Documentation: https://docs.python.org/3/library/
   - enumerate(), zip()
 
 - Functional Programming Modules
-  - [ ] `itertools` - Functions creating iterators for efficient looping
+  - [1/2] `itertools` - Functions creating iterators for efficient looping
   - [ ] `functools` - Higher-order functions and operations on callable objects
 
 - Data Types
-  - [ ] `datetime` - Basic date and time types
+  - [X] `datetime` - Basic date and time types
+    - [X] `zoneinfo` -  IANA time zone support
   - [ ] `collections` - Container datatypes
   - [ ] `copy` - Shallow and deep copy operations
   - [ ] `pprint` - Data pretty printer
