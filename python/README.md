@@ -1,5 +1,26 @@
 # Python Snippets
 
+## Getting Started
+
+To run modules in sub-packages:
+
+```py
+python -m src.stdlib.lib_itertools
+```
+
+```
+.
+├── README.md
+└── src
+    ├── __init__.py
+    ├── helper.py
+    └── stdlib
+        ├── __init__.py
+        ├── lib_datetime.py
+        ├── lib_itertools.py
+        └── lib_pathlib.py
+```
+
 ## Standard Library
 
 Python Documentation: https://docs.python.org/3/library/
