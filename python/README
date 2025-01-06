@@ -12,4 +12,34 @@ assignment. It is particularly usefull with `any` and `all`
 - https://k0nze.dev/posts/python-walrus-operator/
 
 
+
+`*args` and `**kwargs`
+----------------------
+
+`*`-operator: sequential unapck operator. unpacks lists, strings, tuples
+`**`-operator: double-star operator. unpacks dictionaries
+
+While *-operator in a function signature allows you to pass a variable
+number of unnamed arguments, the **-operator lets you pass a variable
+amount of named or keyword arguments
+
+`*args` parameter type: tuple
+`**kwargs` parameter type: dict
+
+Only one parameter in a function signature can be a sequence of
+unnamed parameters marked with the *-operator.
+
+The parameter with the *-operator in front must always come before the
+parameter with the **-operator
+
+Even though it is not required to name the parameters args and kwargs
+it is pretty common in most Python modules to call them like that and
+can be seen as a de-facto standard.
+
+Passing `**somedict` to a function unpacks it into values. This works
+with both fixed and variable amount of named parameters.
+
+- https://k0nze.dev/posts/python-args-kwargs/
+
+
 vim: tw=70
