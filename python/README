@@ -1,0 +1,15 @@
+Python
+======
+
+
+walrus operator :=
+------------------
+
+Officially called the assignment expression operator. It Combines a
+variable assignment with an expression returning the value of the
+assignment. It is particularly usefull with `any` and `all`
+
+- https://k0nze.dev/posts/python-walrus-operator/
+
+
+vim: tw=70
