@@ -1,0 +1,27 @@
+GIT COMMIT
+==========
+
+
+git commit -F/--file
+--------------------
+
+This is usefull when we want to amend HEAD~1.
+
+First store the HEAD commit message:
+
+    git log -1 --pretty=format:%B > HEAD_cmsg
+
+    # or in my case I used an alias
+
+    git msg > HEAD_cmsg
+
+then reset to HEAD~ and amend
+
+    git reset HEAD~
+    git commit --amend
+
+finally, add changes for the former HEAD commit and commit using -F
+
+    git add ...
+    git commit -F HEAD_cmsg
+
