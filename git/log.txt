@@ -1,0 +1,13 @@
+Git Log
+=======
+
+
+^ / --not
+--------
+
+Show logs of branches/refs that are reachable from development branch
+that are not in main (--not and ^ are equivalent):
+
+    git log --oneline development ^main
+
+    git log --oneline refA refB --not refC
