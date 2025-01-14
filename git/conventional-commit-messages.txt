@@ -1,0 +1,113 @@
+Conventional Git Commit Messages
+================================
+
+A CLI util to ensure these conventions, determine version and generate
+change logs <https://github.com/qoomon/git-conventional-commits>
+
+    <type>[optional scope]: <desc>
+
+    [optional body]
+
+    [optional footer(s)]
+
+
+Inital Commit
+-------------
+
+    chore: init
+
+
+
+<type>
+-------
+
+- API relavant changes
+    - feat: commits, that adds or removes new features
+    - fix: commits, that fix bugs
+- refactor: commits, that rewrite/restructure code (does not change
+  any API behaviour)
+    - perf: special case of refactor that improve performance
+- style: commits, that do not affect the meaning (white-space,
+  formatting, missing semi-colons, etc)
+- test: commits, that add missing tests or correcting existing tests
+- docs: commits, that affect documentation only
+- build: commits, that affect build components like build tool, ci
+  pipeline, dependencies, project version, ...
+- ci: commits, that affect operational components like infrastructure,
+  deployment, backup, recovery, ...
+- chore: miscellaneous commits e.g. modifying .gitignore
+
+
+
+[optional scope]
+----------------
+
+- any additional information in parens ()
+- use nouns
+
+
+
+breaking changes
+----------------
+
+(optional) should be indicated with '!' before ':'
+
+  feat(api)!: remove status endpoint
+
+
+
+
+Examples
+--------
+
+    feat: add email notifications on new direct messages
+
+    ---
+
+    feat(shopping cart): add the amazing button
+
+    ---
+
+    feat!: remove ticket list endpoint
+
+    refers to JIRA-1337
+
+    BREAKING CHANGES: ticket enpoints no longer supports list all entites.
+
+    ---
+
+    fix(shopping-cart): prevent order an empty shopping cart
+
+    ---
+
+    fix(api): fix wrong calculation of request body checksum
+
+    ---
+
+    fix: add missing parameter to service call
+
+    The error occurred because of <reasons>.
+
+    ---
+
+    perf: decrease memory footprint for determine uniqe visitors by using HyperLogLog
+
+    ---
+
+    build: update dependencies
+
+    ---
+
+    build(release): bump version to 1.0.0
+
+    ---
+
+    refactor: implement fibonacci number calculation as recursion
+
+    Resolves #23
+    Development-Method: Pair Programming
+    With: James
+
+    ---
+
+    style: remove empty line
