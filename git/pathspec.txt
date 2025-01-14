@@ -1,0 +1,25 @@
+Path Spec
+=========
+
+
+':/'
+----
+
+1. Search by file or path:
+    - Used to specify files or directories in commands like git log or
+      git diff.
+    - Example: show commits that affected file.txt.
+
+        git log :/file.txt
+
+2. Search by commit message:
+    - Used to search for commits containing a specific string in their
+      commit message.
+    - Example: show commits with "fix" in the commit message.
+
+        git log :/fix
+
+
+SEE ALSO:
+    revisions.txt
+

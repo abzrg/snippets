@@ -1,0 +1,37 @@
+Git Revisions
+=============
+
+https://git-scm.com/docs/gitrevisions
+https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection
+
+Git revisions are references to specific commits in a repository. They
+allow you to identify and navigate the commit history.
+
+1. Commit Hash: Each commit has a unique SHA-1 hash (e.g., a1b2c3d).
+2. Branch Names: Use branch names (e.g., main, feature) to refer to
+   the latest commit in that branch.
+3. Tags: Named references to specific commits, often used for marking
+   releases (e.g., v1.0).
+4. HEAD: Represents the current checked-out commit or branch.
+5. Relative Revisions: Use ~ or ^ for navigating history:
+    - HEAD~1 (equivalent to HEAD~): Parent of HEAD.
+    - HEAD~2: Grandparent of HEAD.
+    - HEAD~~, HEAD~~~, etc.: Shorthand for multiple ~, equivalent to
+      HEAD~2, HEAD~3, and so on.
+    - HEAD^1 or HEAD^: First parent of a merge commit.
+    - HEAD^2: Second parent of a merge commit.
+    - HEAD^^, HEAD^^^, etc.: Shorthand for navigating further up the
+      chain of first parents (e.g., HEAD^^ is the parent of HEAD^1).
+    - HEAD^2~~~: Refers to the fourth ancestor (using ~~~) along the
+      second parent branch (from HEAD^2) of a merge commit.
+6. Reflog Notation: Refers to previous states (e.g., HEAD@{3},
+   HEAD@{yesterday}).
+7. Ranges: Specify commit ranges:
+    - A..B: All commits reachable from B but not A.
+    - A...B: Commits reachable from A or B, but not both.
+8. Shortened SHA-1: Use a short version of the hash (a1b2c3d) for
+   convenience.
+
+
+SEE ALSO:
+   reflog.txt

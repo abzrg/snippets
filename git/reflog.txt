@@ -1,0 +1,45 @@
+Git Reflog
+==========
+
+- Reflog is a history of branch movements and reference updates,
+  including changes to HEAD, resets, rebases, and merges.
+- By default, it shows where HEAD has been over time.
+- It is a local log, specific to your machine, and cannot be sent or
+  used on other machines.
+- Entries in the reflog expire after a set period (e.g., 90 days for
+  most references, 30 days for unreachable commits).
+- Reflog is a crucial tool for recovery, helping you find commits that
+  may no longer be accessible through branch pointers or other
+  references.
+
+examples:
+
+- HEAD@3: Refers to the state of HEAD 3 operations ago in the reflog
+          history.
+- HEAD@{yesterday}: Refers to the state of HEAD as it was at some
+                    point yesterday (if there was a change logged in
+                    the reflog).
+- HEAD@{october27th}: Refers to the state of HEAD on October 27th (if
+                      there was a change logged in the reflog on that
+                      date).
+
+example commands:
+
+    # View the reflog history
+    git reflog
+
+    # View the reflog for a specific branch
+    git reflog show <branch-name>
+
+    # Reset to a specific previous state
+    git reset --hard HEAD@{3}
+
+    # Checkout a specific commit from the reflog
+    git checkout HEAD@{yesterday}
+
+    # Recover a lost commit via reflog
+    git log -g
+
+
+SEE ALSO:
+    revisions.txt, pathspec.txt
