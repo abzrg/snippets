@@ -1,0 +1,37 @@
+Git Reset
+=========
+
+
+1. git reset [--mixed] [file]
+
+    This command unstages changes, effectively reversing the effect of
+    'git add'. It resets the content of the index (staging area) to
+    match the last commit, without modifying your working directory.
+
+2. git reset --soft <commit-hash>
+
+    This command moves the 'HEAD' pointer to the specified
+    '<commit-hash>' while keeping the index (staging area) and working
+    directory unchanged.
+
+    It is particularly useful for editing a previous commit. Perform a
+    soft reset, make the necessary changes, and then create a new
+    commit to finalize the adjustments.
+
+3. git reset --hard <commit-hash>
+
+    This command is similar to '--soft' but goes further by restoring
+    both the index and the working directory to match the specified
+    '<commit-hash>'. Be cautious—any changes in the working directory
+    or index will be lost.
+
+
+NOTE
+
+    A soft or hard reset does not delete commits, but it makes them
+    unreferenced by HEAD or any branch. You can recover them with git
+    reflog if necessary.
+
+        git reflog
+        # Identify the SHA of the commit you want to recover.
+        git checkout -b recovery-branch <commit-hash>
