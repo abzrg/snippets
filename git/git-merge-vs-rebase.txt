@@ -1,0 +1,72 @@
+Git Merge vs Git Rebase
+=======================
+
+IMPORTANT
+---------
+
+Do not rebase commits that exist outside your repository and that
+people may have based work on. --Pro git book
+
+
+Git Merge
+---------
+
+To incorporate the changes of feature in to main:
+
+a. three-way merge
+
+    git checkout main
+    git merge feature
+
+b. linear merge: it will automatically use --ff (fast
+   forward)
+
+    git checkout main
+    git merge feature
+
+    - one can use --no-ff to mimick three-way merge, i.e. create a new
+      merge commit.
+
+
+To incorporate new changes to main into our feature branch one can use
+three-way merge (or in case feature has no new change w.r.t main, a
+fast-forward merge), now on the feature branch.
+
+    git checkout feature
+    git merge main
+
+    - This is the recommended way if rebase of feature would change
+      commits that are pushed to remote.
+
+
+Git rebase
+----------
+
+To sync feature with main:
+
+    git checkout feature
+    git rebase main
+
+    - Note that after rebase all the commits on the feature branch are
+      changed and they have new hashes since their ancestors have
+      changed.
+
+To bring all the commits in the feature branch into main:
+
+    git checkout feature
+    git rebase main
+    git checkout main
+    git merge [--ff] feature
+
+
+Comparison
+----------
+
+Merge preserves the history of the project but it becomes messy if
+there many many branches.
+
+Rebase on the other hand make the history linear but there are no
+indication of parallel development in the history.
+
+Also merge does not alter the history (commits) of a repository,
+whereas rebase do. So, rebase must be done cautiously.
