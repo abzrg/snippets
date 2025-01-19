@@ -1,0 +1,26 @@
+Interactive Rebase
+==================
+
+
+--autosquash
+------------
+
+When the commit log message begins with "squash! ..." or "fixup! ..."
+or "amend! ...", and there is already a commit in the todo list that
+matches the same ..., automatically modify the todo list of rebase -i,
+so that the commit marked for squashing comes right after the commit
+to be modified, and change the action of the moved commit from pick to
+squash or fixup or fixup -C respectively. A commit matches the ... if
+the commit subject matches, or if the ... refers to the commit's hash.
+
+
+    NOTE 1: to auto generate the original commit message, "...", in
+    the case of fixup commits one can pass the --fixup to git commit.
+
+    NOTE 2: In the case of 'git commit --fixup <revision>', instead of
+    looking up the exact hash, which is inconvinient, one can use
+    ':/<query>' to search for the desired commit message. git go
+    through the commit messages and return the hash of the first
+    commit that matches that search query. Note that the search is
+    case-sensitive!
+
