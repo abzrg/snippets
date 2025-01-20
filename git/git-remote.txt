@@ -1,0 +1,20 @@
+Git Remote
+==========
+
+
+Info about remote
+-----------------
+
+
+    git remote show origin
+    git remote show -n origin
+
+    -n: don't query remote head, instead use cached information
+
+
+
+List all remotes along with their URLs
+--------------------------------------
+
+    git remote -v[vvv...]
+
