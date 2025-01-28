@@ -1,0 +1,15 @@
+Operators
+=========
+
+&
+-
+
+& operator performs an element-wise bitwise AND operation on 'boolean
+arrays' (True or False). The & operator for boolean arrays is
+equivalent to using np.logical_and().
+
+    arr1 = np.array([True, False, True])
+    arr2 = np.array([False, False, True])
+
+    result = arr1 & arr2
+    print(result)  # Output: [False, False, True]
