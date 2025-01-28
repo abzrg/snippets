@@ -1,0 +1,20 @@
+np.ravel()
+----------
+
+purpose: Flattens a multi-dimensional array into a 1D array.
+syntax: np.ravel(array, order='C')
+
+    order:
+    'C': C-style order (row-major).
+    'F': Fortran-style order (column-major).
+    'A': Preserves the original array's memory order.
+    'K': Preserves the original array's index order.
+
+example:
+
+    import numpy as np
+
+    arr = np.array([[1, 2, 3], [4, 5, 6]])
+    flattened_arr = np.ravel(arr)
+    print(flattened_arr)
+    # Output: [1 2 3 4 5 6]
