@@ -1,0 +1,73 @@
+np.stack()
+==========
+
+purpose: Joins a sequence of arrays along a new axis.
+
+syntax: np.stack(arrays, axis=0)
+
+    arrays: A sequence of arrays to be stacked.
+      axis: The axis along which the arrays will be stacked.
+            Defaults to 0.
+
+note: The stacked array has one more dimension than the input arrays.
+
+example 1:
+
+    import numpy as np
+
+    a = np.array([1, 2, 3])
+    b = np.array([4, 5, 6])
+
+    np.stack((a, b), axis=0)
+    # [[1 2 3]
+    #  [4 5 6]]
+
+    np.stack((a, b), axis=-1)
+    # [[1, 4],
+    #  [2, 5],
+    #  [3, 6]]
+
+
+example 2:
+
+    A = np.arange(9).reshape(3, 3)
+    B = -1 * np.arange(9).reshape(3, 3)
+
+    np.stack((A, B), axis=0).shape # (2, 3, 3)
+    # [[[ 0  1  2]
+    #   [ 3  4  5]
+    #   [ 6  7  8]]
+    #
+    #  [[10 11 12]
+    #   [13 14 15]
+    #   [16 17 18]]]
+
+    np.stack((A, B), axis=1).shape # (3, 2, 3)
+    # [[[ 0  1  2]
+    #   [10 11 12]]
+    #
+    #  [[ 3  4  5]
+    #   [13 14 15]]
+    #
+    #  [[ 6  7  8]
+    #   [16 17 18]]]
+
+    np.stack((A, B), axis=2).shape # (3, 3, 2)
+    # [[[ 0 10]
+    #   [ 1 11]
+    #   [ 2 12]]
+    #
+    #  [[ 3 13]
+    #   [ 4 14]
+    #   [ 5 15]]
+    #
+    #  [[ 6 16]
+    #   [ 7 17]
+    #   [ 8 18]]]
+
+
+alternative:
+
+- np.vstack (axis=0) and np.hstack (axis=1)
+- np.concatenate with desired axis value
+- np.array joins arrays on a leading axis
