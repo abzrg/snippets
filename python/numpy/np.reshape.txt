@@ -1,0 +1,10 @@
+np.reshape()
+============
+
+
+Convert horizontal vector to vertical vector
+--------------------------------------------
+
+    horizontal_vector.shape # (3,)
+    vertical_vector = horizontal_vector.reshape(-1, 1)
+    vertical_vector.shape # (1,3)
