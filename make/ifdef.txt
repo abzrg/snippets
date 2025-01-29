@@ -1,0 +1,8 @@
+ifdef
+=====
+
+Check if a make or environment variable is defined.
+
+    ifdef DEBUG
+        CFLAGS += -g
+    endif
