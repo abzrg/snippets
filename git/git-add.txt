@@ -1,0 +1,13 @@
+GIT ADD
+=======
+
+-N, --intent-to-add
+-------------------
+
+Record only the fact that the path will be added later. An entry for
+the path is placed in the index with no content. This is useful for,
+among other things, showing the unstaged content of such files with
+git diff and committing them with git commit -a.
+
+    git add -N/--intent-to-add new_untracked_file
+    git add -p/--patch new_untracked_file
