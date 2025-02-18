@@ -5,4 +5,19 @@ Git Diff
 List changed files
 ------------------
 
-git diff --name-only <revision>
+    git diff --name-only <revision>
+
+
+Show invisible (e.g., whitespace) characters
+--------------------------------------------
+
+https://stackoverflow.com/a/58037244/13041067
+
+    git diff --ws-highlight=all
+
+or
+
+    git diff | cat -A
+
+Note: the first command does not highlight change of space to tab or
+      vice versa.
