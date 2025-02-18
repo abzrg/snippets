@@ -1,0 +1,30 @@
+Delete trailing whitespaces
+===========================
+
+
+In git repositories
+-------------------
+
+https://stackoverflow.com/q/18973057/13041067
+https://stackoverflow.com/a/24350112/13041067
+
+    git grep --cached -Il -z '[[:blank:]]+$' \
+        | xargs -r -n 1 -0 sed -i'' 's/[[:black:]]\+//'
+
+or
+
+    git grep --cached -I --files-with-matches --null '[[:blank:]]+$' \
+        | xargs --no-run-if-empty -max-args 1 --null sed -i'' 's/[[:black:]]\+//'
+
+
+NOTE: -I ignore binary files
+NOTE: -z,--null ensures filenames are handled correctly even if they
+      contain spaces.
+
+In regular directories
+----------------------
+
+I don't know yet if there's any way to filter out binary files
+
+find ... | xargs ...
+
