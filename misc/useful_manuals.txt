@@ -1,0 +1,8 @@
+# man page of gcc, full of all compiler flags
+man gcc-*
+
+# returns documentation for make's patsubst function
+info make patsubst
+
+# returns document for bash's pattern matching (globbing)
+info bash Pattern
