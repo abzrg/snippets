@@ -1,0 +1,19 @@
+Variable Scope in sh
+====================
+
+(I'm not quite sure about it)
+
+Unless specified 'local', the variable is visible everywhere in the
+current shell environment no matter where it was declared.
+
+The variable can only be visible to sub-shell and child programs with
+two ways:
+
+1. Use of 'export'
+
+    export MY_VAR=1
+    myprogram # myprogram and all other programs can see it.
+
+2. Set the variable when calling the program
+
+    MY_VAR=1 myprogram # only myprogram can see it.
