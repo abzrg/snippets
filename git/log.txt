@@ -11,3 +11,35 @@ that are not in main (--not and ^ are equivalent):
     git log --oneline development ^main
 
     git log --oneline refA refB --not refC
+
+
+View history of a file + (patch info)
+-------------------------------------
+
+    git log -p/--patch path/to/file
+
+
+-G<regex>
+---------
+
+Idea from: https://youtu.be/7f3UdjuQYtw
+
+Search among commits for changes that match the '<regex>' and list all
+of them
+
+    git log -G 'feature' -- setup.py
+
+A file, in this case 'setup.py' could be added at the end to limit the
+scope of search to changes that introduced to that file.
+
+Additionally one can pass '-p, --patch' to show the patch.
+
+    git log -p -G 'feature' -- setup.py
+
+
+Related to that, to identify the nearest version/tag that the change
+was introduced, pass the hash of the commit that the change was
+introduced in.
+
+    git describe --contains <hash>
+
