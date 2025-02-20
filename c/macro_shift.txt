@@ -1,0 +1,22 @@
+Macro: SHIFT (for parsing arguments)
+====================================
+
+source: https://youtu.be/NjgXMc4fynk?t=2468
+
+    /* With assert */
+    #include <assert.h>
+
+    // NOTE 1: ++ (Post increment): xs++ returns the previous value of the xs and then increment xs
+    // NOTE 2: ++ has a higher precendence than *
+    #define shift(xs, xs_sz) (assert(xs_sz > 0), --xs_sz, *xs++)
+
+    /* Without assert */
+    #define shift(xs, xs_sz) (xs_sz <= 0 ? (fprintf(stderr, "%s:%s: OUT OF BOUNDS BRUUUH\n", __FILE__, __LINE__), abort()) : (void)0, --xs_sz, *xs++)
+
+    int main(int argc, char **argv)
+    {
+        while (argc > 0) {
+            printf("%s\n", shift(argv, argc));
+        }
+        return 0;
+    }
