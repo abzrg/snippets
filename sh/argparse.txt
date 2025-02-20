@@ -1,0 +1,35 @@
+ARGUMENT PARSING
+================
+
+* For more checkout OpenFOAM ($WM_DIR):
+
+Parsing using For loop
+----------------------
+
+    # Note: Upon execution of for loop the list in which for is
+    # looping over is not a reference to "$@". Rather it's a copy of
+    # the list.
+
+    for arg in "$@"
+    do
+
+        # Remove one arg from "$@"
+        shift
+
+        # Pattern matching
+        case "$arg" in
+
+        (-, --)
+            # Do not parse any arguments
+            break #?
+            ;; 
+
+        (*-xyzOpt-*)
+            ...
+            continue;
+
+        # If needed re-add "$arg" to "$@" (in case they are needed to
+        # be passed to sub shell scripts)
+        set -- "$@" "$arg"
+    done
+
