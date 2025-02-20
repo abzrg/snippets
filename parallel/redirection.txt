@@ -1,0 +1,19 @@
+A note about redirection
+========================
+
+    parallel echo "hello" > {} ::: file1 file2
+
+The issue with this command is that the '>' redirection happens before
+parallel runs, which means '>' only applies to parallel, not to the
+individual commands being executed in parallel.
+
+Solutions:
+
+    # 1
+    parallel echo "hello" '|' tee {} ::: file1 file2
+
+    # 2
+    parallel 'echo "hello" > {}' ::: file1 file2
+
+    # 3 (my favorite)
+    parallel echo "hello" '>' {} ::: file1 file2
