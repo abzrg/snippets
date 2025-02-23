@@ -1,0 +1,127 @@
+pyproject.toml
+==============
+
+Examples:
+
+---
+
+    [project]
+
+    dependencies = [
+        "GitPython>=3,<4",
+        "requests>=2,<3",
+        "typer-slim>=0.13,<0.14",
+    ]
+
+- The package 'GitPython' must be at least version 3.0.0 but less than
+  4.0.0.
+- The package requests must be at least version 2.0.0 but less than
+  3.0.0.
+- ...
+
+Why?
+
+1. Prevent Breaking Changes - Major version updates (x.0.0) often
+   introduce breaking changes. Keeping dependencies within a major
+   version (<4, <3, <0.14) ensures stability.
+
+2. Allow Security and Bug Fixes – Minor and patch updates (x.y.z)
+   within the allowed range can introduce security fixes and
+   improvements without breaking the code.
+
+3. Maintain Compatibility – If other dependencies require a specific
+   major version, keeping the range tight avoids conflicts.
+
+
+    [project.optional-dependencies]
+    lint = ["ruff"]
+    typing = [
+        "mypy>=1,<2",
+        "types-requests"
+    ]
+    dev = [
+        "styro[lint]",
+        "styro[typing]",
+    ]
+
+One can specify groups of dependencies that are not required for the
+core functionality of the project but are useful for specific tasks
+(e.g., development, linting, testing). These can be installed with
+
+    pip install [-e] .[group-name]
+
+    pip install -e .[lint]
+    pip install -e .[typing]
+    pip install -e .[dev]
+
+
+SIDE NOTE:
+- mypy: a static type checker
+- types-requests: Provides type hints for the requests library, which
+  doesn’t include built-in type annotations.
+
+SIDE NOTE:
+- the [dev] group bundles other optional groups, making it convenient
+  for developers.
+
+    pip install -e .[dev]
+
+---
+
+    [project.scripts]
+    styro = "styro.__main__:app"
+
+Creates a CLI command styro that runs styro.__main__:app().
+
+This section defines a command-line script that can be run after
+installing your package. When you install this package, it creates an
+executable named styro that runs:
+
+    from styro.__main__ import app
+    app()
+
+---
+
+    [tool.hatch.version]
+    path = "styro/__init__.py"
+
+This tells Hatch (a package manager and project builder) where to find
+your package version.
+It assumes styro/__init__.py contains something like:
+
+    __version__ = "1.2.3"
+
+---
+
+    [tool.mypy]
+    packages = ["styro"]
+
+It tells Mypy to only check the styro package for type errors.
+Therefore instead of running
+
+    mypy styro
+
+one can run
+
+    mypy
+
+and it will automatically check styro.
+
+---
+
+    [tool.ruff.lint]
+    extend-select = ["ALL"]
+    extend-ignore = [
+        "COM812",
+        "D",
+        "E501",
+        "S101",
+    ]
+
+- This configures Ruff, a fast Python linter.
+- It enables all linting rules (extend-select = ["ALL"]).
+- But it ignores specific rules:
+
+To check with ruff:
+
+    ruff check .
