@@ -182,8 +182,8 @@ using a "mount".
         python -c 'f="/data/data.txt";open(f,"a").write("Ran!\n");print(open(f).read())'
 
   * Mount types:
-    1. Volumes                PERSISTENT
-    2. Bind mounts            PERSISTENT
+    1. Volumes                PERSISTENT (Persists even after container removal)
+    2. Bind mounts            PERSISTENT (Exists as long as host directory exists)
     3. Tempfs mounts          NOT PERSISTENT
 
   * Persistence comparison
@@ -208,6 +208,44 @@ using a "mount".
         SSHFS                              |
     Container does not need access to host |
     Not convenient to share with host      |
+
+
+Remark on Volumes:
+- You don't need to manually create the volume. Docker will automatically create it
+  if it doesn’t exist when you run the container.
+- The volume persists even after the container is removed (--rm only removes the
+   container, not the volume).
+- Data of a volume is usually stored in: /var/lib/docker/volumes/my-workspace/_data/
+- To inspect the volume:
+
+    docker volume inspect my-workspace
+
+Note on performance:
+- volumes: Optimized for container storage
+- bind mounts: Can be slower due to filesystem overhead
+
+Note on protability:
+- volumes: Works anywhere Docker runs
+- bind mounts: Requires an exact path on the host
+
+Which One Should You Use?
+- Use bind mounts if you want real-time access to your files from your host machine (e.g., working on local code).
+- Use volumes if you want persistent storage inside Docker, separate from the host file system.
+
+Example:
+
+    # bind mounts
+    docker run -it -rm -v $(PWD):/workspace ubuntu
+
+    # docker volumes
+    docker volume create my-workspace  # create a named volume
+    docker run -it --rm -v my-workspace:/workspace ubuntu    
+
+    # list the volumes
+    docker volume ls
+
+    # remove a volume
+    docker volume rm my-workspace
 
 
 Custom Images (build your own Dockerfiles)
