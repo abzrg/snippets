@@ -1,6 +1,12 @@
 pyproject.toml
 ==============
 
+Resources:
+1. https://github.com/gerlero/styro
+2. https://til.simonwillison.net/python/pyproject
+
+----------------------------------------------------------------------
+
 Examples:
 
 ---
@@ -125,3 +131,18 @@ and it will automatically check styro.
 To check with ruff:
 
     ruff check .
+
+---------------------------------------------------------------------
+
+To build the package (the source dist and wheel files) using the
+pyproject.toml configuration:
+
+    # First install the build package
+    pip install build
+
+    python -m build
+
+It will generate two files (sdist file and whl file) in the ':/dist'
+directory.
+
+
