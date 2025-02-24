@@ -297,3 +297,26 @@ Publishing/Pushing images on a registry
 -------------------------------
 
 ...
+
+
+
+Rename a Docker Image
+---------------------
+
+source: https://stackoverflow.com/a/25214186/13041067
+
+    docker image tag server:latest myname/server:latest
+    # or
+    docker image tag d583c3ac45fd myname/server:latest
+
+Tags are just human-readable aliases for the full image name (d583c3ac45fd...).
+
+So you can have as many of them associated with the same image as you like. If you don't
+like the old name you can remove it after you've retagged it:
+
+    docker rmi server
+
+That will just remove the alias/tag. Since d583c3ac45fd has other names, the actual image
+won't be deleted.
+
+
