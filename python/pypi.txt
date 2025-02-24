@@ -7,6 +7,14 @@ There's also a test.pypi.org that is used for testing puposes.
 It's recommended to first upload the project to test index and make
 sure everything is ok and then upload it to the main pypi index
 
+Consider the following things when you decide to publish a package on
+pypi:
+1. Make sure the package/code is clean
+2. Adding supporting material so your package is easy to use
+3. Choose an appropriate software license (tldrlegal.com, choosealicense.com)
+4. Make managing package updates easy (bumpversion)
+5. Use project classifiers
+
 
 Twine
 -----
