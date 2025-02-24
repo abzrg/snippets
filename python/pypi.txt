@@ -1,0 +1,33 @@
+PYPI.org
+========
+
+Package index for python
+
+There's also a test.pypi.org that is used for testing puposes.
+It's recommended to first upload the project to test index and make
+sure everything is ok and then upload it to the main pypi index
+
+
+Twine
+-----
+
+    pip install twine
+
+A package that make it easier to check and upload a package to pypi
+index.
+
+To check everything is ok for upload:
+
+    twine check dist/*
+
+To upload to test index:
+
+    twine upload -r testpypi dist/*
+
+To upload o the main index
+
+    twine upload dist/*
+
+To later on check the published package to test index:
+
+    pip install -i https://test.pypi.org/simple <packagename>
