@@ -1,0 +1,17 @@
+src/<project>/py.typed File
+===========================
+
+source: https://peps.python.org/pep-0561/
+
+Package maintainers who wish to support type checking of their code
+MUST add a marker file named py.typed to their package supporting
+typing. This marker applies recursively: if a top-level package
+includes it, all its sub-packages MUST support type checking as well.
+
+source: https://safjan.com/the-importance-of-adding-py-typed-file-to-your-typed-package/
+
+The py.typed file is a marker file that indicates to type checkers
+like mypy that your package comes with type annotations. Without this
+file, the type checker won't use the type hints provided by your
+package, leading to potential type errors
+
