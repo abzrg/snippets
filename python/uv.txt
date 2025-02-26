@@ -1,0 +1,75 @@
+UV Package Manager
+==================
+source: https://www.youtube.com/watch?v=qh98qOND6MI
+
+Installation
+------------
+
+    brew install uv
+    pip install uv
+
+    eval "$(uv generate-shell-completion zsh)"
+
+
+Commands
+--------
+
+init
+    Initialize a project
+        uv init --app
+        uv init --lib
+
+    To add subprojects
+        uv init another_project
+
+    To add subprojects that are independent from the parent
+        uv init --no-workspace yet_another_package
+
+add, remove
+        uv add numpy fastapi
+        uv remove pandas
+
+sync
+    Install the dependencies
+        uv sync
+
+run
+    Run the application
+        uv run
+
+tool
+    Run ruff
+        uv tool run ruff check
+        # or
+        uvx ruff check
+
+    Initial configuration for shells
+        uv tool update-shell
+
+    Location where uv stores tools
+        uv tool dir
+
+    Install, uninstall, or upgrade a tool
+        uv [un]install/upgrade ruff
+
+python
+    List all the available Python versions on the system
+        uv python list
+
+    To install a specific python version
+        uv python install 3.14.0
+
+    To install the newest version that adheres to a version constraint:
+        uv python install '>=3.9,<3.11'  # e.g., installs cpython-3.10.15-macos-aarch64-none
+
+venv
+    Set a particular python version for the venv
+        uv venv --python 3.13.0
+
+build
+    Relies on a thirdparty package to do the build (e.g, hatchling, build, setuptools, ...)
+        uv build /path/to/project
+
+publish
+    Publish a package to PyPI
+        uv publish  [--password]
