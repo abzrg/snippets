@@ -1,8 +1,17 @@
+root = true
+
 [*]
 max_line_length = 80
+trim_trailing_whitespace = true
+insert_final_newline = true
+indent_style = space
 
 [*.txt]
 max_line_length = 70
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+indent_style = space
 
 [README]
 max_line_length = 70
