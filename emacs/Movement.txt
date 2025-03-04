@@ -1,0 +1,22 @@
+Movement Tips in Emacs
+----------------------
+https://www.masteringemacs.org/article/effective-editing-movement
+
+
+Numeric Argument: 'C-<n>', 'M-<n>', 'C-M-<n>', 'C-u <n>'
+    'C-u 10 C-p' jumps 10 lines up
+    'C-u 3 C-k' kills the next three lines
+
+'M--', 'C--': negative argument
+    'M-- M-c' capitalize the word behind the cursor
+    'C-- C-k' kills from the current cursor position to the
+    beginning of the previous line
+
+'C-u C-SPC': Jump back to where you were before
+'C-M-s/r': Isearch-regex
+'C-s M-r': toggle literal/regex search
+'C-s M-c': toggle case-fold
+'C-s M-%': query replace
+
+'M-m': go the the first word of the line after preceeding whitespace
+       (replaces the need to do 'C-a M-f')
