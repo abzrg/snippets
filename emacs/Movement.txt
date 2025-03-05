@@ -20,3 +20,5 @@ Numeric Argument: 'C-<n>', 'M-<n>', 'C-M-<n>', 'C-u <n>'
 
 'M-m': go the the first word of the line after preceeding whitespace
        (replaces the need to do 'C-a M-f')
+
+To un/comment a paragraph: 'M-h M-;'
