@@ -1,0 +1,18 @@
+From: Back to Basics: Forwarding References - How to Forward
+      Parameters in Modern C++ - Mateusz Pusz 2023
+      https://youtu.be/0GXnfi9RAlU
+
+| Pointer                                | Reference                                        |
+|----------------------------------------+--------------------------------------------------|
+| Objects                                | Alias (not an object)                            |
+| Always occupy memory                   | May not occupy storage                           |
+| Arrays of pointers are legal           | No arrays of references                          |
+| Pointers to pointers legal             | References or pointers to references not allowed |
+| Pointers to `void` legal               | No reference to `void`                           |
+| May be uninitialized                   | Must be initialized                              |
+| Can be reassigned after initialization | Immutable                                        |
+| Can be cv-qualified                    | Can't be cv-qulified                             |
+
+
+"Use references when you can, and pointers when you have to."
+                                                   -- C++ FAQ
