@@ -9,12 +9,12 @@ https://stackoverflow.com/q/18973057/13041067
 https://stackoverflow.com/a/24350112/13041067
 
     git grep --cached -Il -z '[[:blank:]]+$' \
-        | xargs -r -n 1 -0 sed -i'' 's/[[:black:]]\+//'
+        | xargs -r -n 1 -0 sed -i'' 's/[[:blank:]]\+//'
 
 or
 
     git grep --cached -I --files-with-matches --null '[[:blank:]]+$' \
-        | xargs --no-run-if-empty -max-args 1 --null sed -i'' 's/[[:black:]]\+//'
+        | xargs --no-run-if-empty -max-args 1 --null sed -i'' 's/[[:blank:]]\+//'
 
 
 NOTE: -I ignore binary files
