@@ -1,0 +1,10 @@
+NOTE: only one worktree at a time can checkout a branch
+
+git branch feature-br
+git worktree feature-wt feature-br
+
+git worktree add feature-br
+# creates a feature-br branch (pointing to the current branch) and feature-br worktree
+
+git worktree remove unwanted-wt
+git branch -d unwanted-br
