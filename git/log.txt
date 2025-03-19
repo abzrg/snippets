@@ -43,3 +43,15 @@ introduced in.
 
     git describe --contains <hash>
 
+
+Other Investigations
+--------------------
+
+List all commits between two revision that changed files under a
+repository:
+
+    git log OpenFOAM-v2312..OpenFOAM-v2412 -- src/finiteArea
+
+Find a string inside the commit message
+
+    git log --grep='<regex>'
