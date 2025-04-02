@@ -1,0 +1,32 @@
+Remote branches
+===============
+
+Dog-ear this page!
+https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches
+
+Remove a remote branch
+----------------------
+
+    git push <remote_name> --delete/-d <branch_name>
+    git push <remote_name> :<branch_name>
+
+>>> From pro git book:
+
+Suppose you’re done with a remote branch — say, you and your
+collaborators are finished with a feature and have merged it into your
+remote’s main branch (or whatever branch your stable code-line is in).
+You can delete a remote branch using the rather obtuse syntax git push
+[remotename] :[branch]. If you want to delete your serverfix branch
+from the server, you run the following:
+
+    $ git push origin :serverfix
+    To git@github.com:schacon/simplegit.git
+     - [deleted]         serverfix
+
+Boom. No more branches on your server. You may want to dog-ear this
+page, because you’ll need that command, and you’ll likely forget the
+syntax. A way to remember this command is by recalling the git push
+[remotename] [localbranch]:[remotebranch] syntax that we went over a
+bit earlier. If you leave off the [localbranch] portion, then you’re
+basically saying, “Take nothing on my side and make it be
+[remotebranch].”
