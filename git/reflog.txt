@@ -40,6 +40,11 @@ example commands:
     # Recover a lost commit via reflog
     git log -g
 
+    # Include datetime in the output
+    git reflog --date=iso
+
+    # Include more information
+    git reflog --pretty
 
 SEE ALSO:
     revisions.txt, pathspec.txt
