@@ -1,0 +1,9 @@
+switch  & checkout: switch branch
+switch  & reset   : move HEAD reference
+reset   & restore : undo staged changes
+restore & checkout: undo unstaged changes
+
+switch & checkout & rest & restore:
+    accidentally delete shit in your working directory
+
+source: https://www.youtube.com/watch?v=e6ZI6AmlHN4

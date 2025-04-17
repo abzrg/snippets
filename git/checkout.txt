@@ -1,0 +1,23 @@
+checkout
+========
+
+An overloaded command that is intended to be replaced by 'switch' and
+'restore'
+
+    git checkout [-b] branch
+        git switch branch
+        git switch -c,--create new-branch
+
+    git checkout file.txt  # revert a file to be similar to the the
+                           # one in HEAD
+        git restore file.txt
+
+    git checkout HEAD@{10.minutes.ago} -- file.txt  # rever to an
+                                                    # older version
+        git restore --source HEAD@{10.minutes.ago} file.txt
+
+    git checkout -p file.txt  # patch-checkout: interactive revert
+                              # hunk-by-hunk
+        git restore -p file.txt
+
+source: https://www.youtube.com/watch?v=e6ZI6AmlHN4

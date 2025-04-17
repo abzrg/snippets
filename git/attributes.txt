@@ -1,0 +1,19 @@
+Attributes
+==========
+
+attributes is a way of telling git certain things about file
+extensions in your repository.
+
+for the default git-diff tool cannot diff the image files.
+
+    echo '*.png diff=exif' >> .gitattributes
+    # take every file that ends in png and pre-process them with a
+    # strategy called 'exif'
+
+    git config diff.exif.textconv exiftool
+    # the 'exif' strategy is to run exiftool on the file
+
+smudge and clean: ???
+    exmaple: rcs keywords
+
+source: https://www.youtube.com/watch?v=e6ZI6AmlHN4

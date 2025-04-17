@@ -1,0 +1,48 @@
+Hooks
+=====
+
+git comes with 28-ish hooks. Most of them are not applicable to most
+people and repos. Here are the essential and usefull ones:
+
+commit stuff:
+    - pre-commit
+    - prepare-commit-msg
+    - commit-msg
+    - post-commit
+
+rewriting stuff:
+    - pre-rebase
+    - post-rewrite
+
+merging stuff:
+    - post-merge
+    - pre-merge-commit
+
+switching/pushing stuff:
+    - post-checkout
+    - reference-transaction
+    - pre-push
+
+examples of things that can be done with hooks:
+
+- commit message formatting
+- package install
+- update ctags
+- submodule status
+- tabs or spaces
+- linting
+- large files
+- test passes
+- rebasing merged commit prevention
+
+helpers for hooks:
+
+- pre-commit
+    brew install pre-commit
+    pre-commit sample-config > .pre-commit-config.yaml
+    pre-commit install
+- husky
+    npm install --save-dev husky
+    mpx husky init
+
+source: https://www.youtube.com/watch?v=e6ZI6AmlHN4
