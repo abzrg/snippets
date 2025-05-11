@@ -1,0 +1,76 @@
+Modules
+=======
+
+
+Accessing modules not in the current directory
+----------------------------------------------
+
+To access a module outside the current directory (e.g., in a sibling
+directory or a different crate), you have a few options:
+
+1. Relative module path inside your crate:
+
+    If the file is in a subfolder like `src/utils/helpers.rs`, then
+    declare it like:
+
+        // In src/main.rs
+        mod utils; // Looks for src/utils/mod.rs
+        // Inside utils/mod.rs:
+        pub mod helpers;
+
+    And then you can use:
+
+        use utils::helpers::get_full_name;
+
+2. External crates:
+
+    If the module is part of another crate (package), you need to:
+
+    1. Add it as a dependency in `Cargo.toml`.
+    2. Use the crate name as the root, like:
+
+        use other_crate::helpers::get_full_name;
+
+---
+
+For a standard Rust project, all your module source files must be
+located inside the `src/` directory or subdirectories of it.
+
+Valid locations for modules:
+
+- `src/helpers.rs` — accessible via `mod helpers;`
+- `src/utils/helpers.rs` — accessible via:
+  - `mod utils;` in `main.rs` (and `pub mod helpers;` in `utils/mod.rs`)
+- `src/main.rs` and `src/lib.rs` are entry points and root modules for
+  binaries and libraries, respectively.
+
+Invalid:
+
+You *cannot* place a module file outside `src/` (like in the root of
+the project or in a sibling folder) and use it directly via `mod`.
+Rust won't look there automatically.
+
+Exception: Workspaces and External Crates
+
+If you want to organize code across multiple directories outside
+`src/`, you can:
+
+- Set up a Cargo workspace with multiple packages/crates.
+  https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html
+- Each crate has its own `src/` directory.
+- You can then use them as dependencies in `Cargo.toml`.
+
+Example:
+
+    my_workspace/
+    ├── Cargo.toml          # workspace
+    ├── main_project/
+    │   └── src/
+    │       └── main.rs
+    ├── shared_code/
+    │   └── src/
+    │       └── lib.rs
+
+Then in `main_project/Cargo.toml`, you can declare a dependency on
+`shared_code`.
+
