@@ -1,0 +1,55 @@
+rsync
+=====
+
+    rsync -avz host:file1 :file1 /dest/
+    rsync -avz user@host:file1 :file1 /dest/
+    rsync -avz /source host:/dest
+
+
+-a,--archive
+    archive mode; same as -rlptgoD (no -H)
+    essentially keeps the file metadata (permission, mtime etc.)
+
+-v,--verbose
+
+-P = --partial --progress -h,--human-readable
+    --partial: in case of partial transfer of a file, as a result of a
+               transfer interruption, continue where you left off
+    --progress: show progress during transfer
+    --humna-readable: output numbers in a human-readable format
+
+--delete
+    deletes files that are removed locally but exist on the remote
+    side. usefull for sync and not for backtup.
+--delete-after
+    delete to be removed files after transfer is being done, allowing
+    you to pause during the transfer in case you cancel out the
+    deletion.
+--delete-excluded
+
+--exclude=PATTERN
+    exclude files matching PATTERN
+--exclude-from=FILE
+    read exclude patterns from a FILE
+
+-u,--update
+    skip files that are newer on the receiver. this is usefull in
+    collaborative projects where person A updates file X and person B
+    doesn't; after person A transfers his files, the file X of person
+    B transfers does not get transfered.
+
+
+A note about trailing '/':
+
+    A trailing slash on the source changes this behavior to avoid
+    creating an additional directory level at the destination. You can
+    think of a trailing / on a source as meaning "copy the contents of
+    this directory" as opposed to "copy the directory by name", but in
+    both cases the attributes of the containing directory are
+    transferred to the containing directory on the destination. In
+    other words, each of the following commands copies the files in
+    the same way, including their setting of the attributes of
+    /dest/foo:
+
+        rsync -av /src/foo /dest
+        rsync -av /src/foo/ /dest/foo
