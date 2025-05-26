@@ -1,0 +1,13 @@
+CMAKE PRESETS
+=============
+
+DOCS: https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html
+
+List presets:
+    cmake --list-presets
+
+Configure:
+    cmake --preset <preset>
+
+Build:
+    cmake --build --preset <preset>
