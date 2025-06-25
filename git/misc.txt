@@ -4,3 +4,9 @@ Misc.
 Count number of commits between two revisions
 
     git rev-list --count v1.0.0..v1.1.0
+
+
+Find the most recent commit that changed a file
+
+    git log -p -1 -- path/to/file
+    git log --patch -1 -- path/to/file
