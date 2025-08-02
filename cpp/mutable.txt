@@ -1,0 +1,69 @@
+MUTABLE keyword in C++
+======================
+
+In C++, the mutable keyword is not applied to pointers themselves to
+make the pointer variable mutable (as pointers are already mutable by
+default unless declared const). Instead, mutable is applied to class
+data members to allow them to be modified even when accessed through a
+const object or a const pointer/reference to an object. Why mutable is
+needed or where it is used: The primary use case for mutable is to
+achieve logical constness while allowing for physical mutability. This
+means that a const member function or a const object should logically
+not change the observable state of the object, but it might need to
+internally modify certain data members for performance or
+implementation reasons. Here are specific scenarios where mutable is
+used: Caching and Lazy Evaluation. When an object needs to cache a
+calculated value that is expensive to compute, but the calculation
+itself doesn't alter the logical state of the object. A const member
+function can then update this mutable cache variable on demand (lazy
+evaluation) without violating const-correctness.
+
+    class MyClass {
+    private:
+        mutable int cached_value;
+        bool value_is_cached;
+
+    public:
+        int calculateAndGet() const {
+            if (!value_is_cached) {
+                // Perform expensive calculation
+                cached_value = /* result of calculation */;
+                value_is_cached = true; // This also needs to be mutable if it's a member
+            }
+            return cached_value;
+        }
+    };
+
+thread synchronization
+----------------------
+
+In multithreaded environments, a const member function might need to
+acquire a mutex or lock to ensure thread safety when accessing shared
+resources. The mutex itself might need to be modified
+(locked/unlocked), even if the function is logically const. Declaring
+the mutex as mutable allows this.
+
+    #include <mutex>
+
+    class ThreadSafeData {
+    private:
+        mutable std::mutex mtx;
+        int data;
+
+    public:
+        int getData() const {
+            std::lock_guard<std::mutex> lock(mtx); // mtx is modified here
+            return data;
+        }
+    };
+
+Logging and Debugging
+---------------------
+
+A const member function might need to update internal logging or
+debugging counters, which do not affect the external, logical state of
+the object. These counters can be declared mutable.
+
+In summary, mutable is a tool to selectively bypass const-correctness
+for specific internal data members that are part of the object's
+implementation details, rather than its observable logical state.
