@@ -1,0 +1,45 @@
+Patch Series
+============
+
+1. To generate a patch series:
+
+    git switch feature-branch
+    git format-patch <base-branch>
+    # or
+    git format-patch <base-branch>..<feature-branch>
+
+This produces files like:
+
+    0001-fix-bug.patch
+    0002-add-feature.patch
+    0003-update-docs.patch
+    ...
+
+2. To apply patch series:
+
+    # git-am is recommended for patch emails
+    git am /path/to/patches/.*patch
+
+NOTE:
+    1. Make sure you are on the branch where you want the commits
+       applied.
+    2. If a conflict occurs during git am, Git will stop and let you
+       resolve it. After resolving:
+
+        git am --continue
+
+       To abort series:
+
+        git am --abort
+
+NOTE: git-patch apply patch content but not commits, hence not
+      preserving hisotry (author info or commit messages).
+
+TIP:
+    - Always start on a clean working directory (git status should
+      show nothing to commit).
+    - If the patches were generated from a different repository, make
+      sure your base branch matches the one the patches were made
+      from.
+    - For large patch series, git am is much easier than manually
+      applying with git apply.

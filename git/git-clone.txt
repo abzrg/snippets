@@ -1,0 +1,12 @@
+$ git clone -b,--branch develop <remote-url>
+
+  this clones the whole repo and then checks out the `develop`
+  branch instead of the default branch. It is simply equivalent to:
+
+  $ git clone <remote-url>
+  $ git checkout develop
+
+$ git clone --single-branch --branch develop <remote-url>
+
+  this one however only clones the develop branch, saving network
+  traffic and disk space.

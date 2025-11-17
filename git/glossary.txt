@@ -1,0 +1,46 @@
+Glossary
+========
+
+Merge base / Most recent common ancestor
+----------------------------------------
+
+In Git, the parent commit of a branch that was branched off from
+another branch is commonly referred to as the "merge base" between the
+two branches.
+
+More specifically:
+- The merge base is the most recent common ancestor commit of two
+  branches.
+- It's the commit where the two branches diverged.
+- When you create a new branch from another branch, the commit you
+  branched off of becomes the merge base between the two.
+
+Example:
+
+Let's say you have this commit history:
+
+    A---B---C (main)
+             \
+              D---E (`feature`)
+
+- Commit C is the merge base of `main` and `feature`.
+- `feature` was branched off of `main` at commit C.
+
+Other terms you might hear:
+- Base commit: Often used informally or in GUIs (like GitHub) to mean
+  the same thing.
+- Ancestor commit: A more general term; merge base is the nearest
+  common ancestor.
+
+
+If you want to find the merge base between `main` and `feature`:
+
+    git merge-base main feature
+
+This will return the commit hash of the most recent common ancestor
+(i.e. the point where `feature` branched off from `main`).
+
+You can use this in combination with git show to see details of that
+commit:
+
+    git show $(git merge-base main feature)

@@ -22,4 +22,4 @@ Path Spec
 
 SEE ALSO:
     revisions.txt
-
+    https://css-tricks.com/git-pathspecs-and-how-to-use-them/
