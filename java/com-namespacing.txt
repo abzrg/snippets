@@ -1,0 +1,10 @@
+com Namespacing
+===============
+
+Why package names start with "com"?
+
+It's just a namespace definition to avoid collision of class names.
+The com.domain.package.Class is an established Java convention wherein
+the namespace is qualified with the company domain in reverse.
+
+source: https://stackoverflow.com/a/7411742

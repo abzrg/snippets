@@ -1,0 +1,44 @@
+Project Structure in Java
+=========================
+
+"Simple" J2SE projects
+----------------------
+
+As cletus explained, source directory structure is directly equivalent
+to package structure, and that's essentially built into Java.
+Everything else is a bit less clear-cut.
+
+A lot of simple projects are organized by hand, so people get to pick
+a structure they feel OK with. What's often done (and this is also
+reflected by the structure of projects in Eclipse, a very dominant
+Java tool) is to have your source tree begin in a directory called
+`src`. Your package-less source files would sit directly in src, and
+your package hierarchy, typically starting with a `com` directory,
+would likewise be contained in `src`. If you CD to the `src` directory
+before firing up the `javac` compiler, your compiled .class files will
+end up in the same directory structure, with each .class file sitting
+in the same directory and next to its .java file.
+
+If you have a lot of source and class files, you'll want to separate
+them out from each other to reduce clutter. Manual and Eclipse
+organization often place a `bin` or classes directory parallel to
+`src` so the .class files end up in a hierarchy that mirrors that of
+`src`.
+
+If your project has a set of `.jar` files to deliver capability from
+third-party libraries, then a third directory, typically `lib`, is
+placed parallel to `src` and `bin`. Everything in `lib` needs to be
+put on the `classpath` for compilation and execution.
+
+Finally, there's a bunch of this and that which is more or less
+optional:
+
+- docs in `doc`
+- resources in `resources/`
+- data in `data/`
+- configuration in `conf/`...
+
+You get the idea. The compiler doesn't care about these directories,
+they're just ways for you to organize (or confuse) yourself.
+
+source: https://stackoverflow.com/a/1953893
