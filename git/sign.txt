@@ -1,0 +1,64 @@
+Sign
+====
+
+
+SSH
+---
+
+generate key if you don't have one
+
+    ssh-keygen -t ed25519 -C "<email>" -f id_ed25519_sign
+
+Enable ssh signinig
+
+    git config --global gpg.format ssh
+    git config --global user.signingkey ~/.ssh/id_ed25519_sign.pub
+    git config --global commit.gpgsign true
+
+Commits signed with an SSH key can also be verified locally. To verify
+commits locally, create an allowed signers file for Git to associate
+SSH public keys with users:
+
+    git config gpg.ssh.allowedSignersFile "~/.ssh/allowed_signers"
+
+or put this in your config
+
+    [gpg "ssh"]
+        allowedSignersFile = ~/.ssh/allowed_signers
+
+Here's how to populate this file:
+
+    # Declaring the `git` namespace helps prevent cross-protocol attacks.
+    echo "$(git config --get user.email) namespaces=\"git\" $(cat ~/.ssh/<MY_KEY>.pub)" >> ~/.ssh/allowed_signers
+
+    # something like the following
+    # example@gitlab.com namespaces="git" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAmaTS47vRmsKyLyK1jlIFJn/i8wdGQ3J49LYyIYJ2hv
+
+
+Repeat the previous step for each user who you want to verify
+signatures for. Consider checking this file in to your Git repository
+if you want to locally verify signatures for many different
+contributors.
+
+
+to sign a commit
+
+    git commit -S -m "My commit msg"
+
+Use git log --show-signature to view the signature status for the commits:
+
+    $ git log --show-signature
+
+    commit e2406b6cd8ebe146835ceab67ff4a5a116e09154 (HEAD -> main, origin/main, origin/HEAD)
+    Good "git" signature for johndoe@example.com with ED25519 key SHA256:Ar44iySGgxic+U6Dph4Z9Rp+KDaix5SFGFawovZLAcc
+    Author: John Doe <johndoe@example.com>
+    Date:   Tue Nov 29 06:54:15 2022 -0600
+
+        SSH signed commit
+
+Add your signing key to github or gitlab so that they can show whether
+a commit is verified or not.
+
+More information here:
+    https://docs.gitlab.com/user/project/repository/signed_commits/ssh/
+    https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent

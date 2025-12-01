@@ -1,0 +1,39 @@
+SSH Authentication (github examples)
+==================
+
+- generate key with, optionally a certain <name>
+
+    ssh-keygen -t ed25519 -C "<email> or <github-anon-email>" -f <name>
+
+- copy and add it to github as "Authentication" key
+
+    tr -d '\n' < ~/.ssh/<name>.pub | pbcopy
+
+- add the following to ~/.ssh/config
+
+    Host github.com
+        HostName github.com
+        User git
+        AddKeysToAgent yes
+        IdentityFile ~/.ssh/<name>  # path to private key
+
+- ensure ssh-agent is running and your key is added
+
+    eval "$(ssh-agent -s)"
+    ssh-add -l
+
+- test github ssh connection:
+
+    ssh -T git@github.com
+
+  a successfull response would look something like:
+
+    Hi <username>! You've successfully authenticated...
+
+
+NOTE: If you still get “permission denied”, check file permissions.
+SSH requires strict permissions:
+
+    chmod 600 ~/.ssh/<name_of_private_key>
+    chmod 700 ~/.ssh
+    chmod 600 ~/.ssh/config

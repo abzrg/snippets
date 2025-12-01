@@ -1,0 +1,14 @@
+Push To Multiple Remotes At Once
+================================
+
+    git remote add origin git@a.b:c/d.git
+
+    # NOTE: the first add will overrite the original url of origin;
+    #       hence we re-add it.
+    git remote set-url --add --push origin git@a.b:c/d.git
+    git remote set-url --add --push origin git@w.x:y/z.git
+
+    git push origin
+
+
+source: https://medium.com/@sunside/git-pushing-to-multiple-remotes-at-the-same-time-38e93c135f19
